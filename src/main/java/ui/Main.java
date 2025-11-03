@@ -52,4 +52,13 @@ public class Main extends javax.swing.JFrame {
                 }
         );
     }
+    private void loadDataTable() {
+        DefaultTableModel modelo = (DefaultTableModel) table1.getModel();
+        usuarios = (ArrayList<Usuario>) userservice.findAll();
+        modelo.setRowCount(0);
+        usuarios.forEach( (j)->{
+            var fila =  new Object[]{ j.getCorreo(), j.getPais(),j.getPlataforma() };
+            modelo.addRow(fila);
+        });
+    }
 }
